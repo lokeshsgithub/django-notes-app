@@ -18,13 +18,11 @@ pipeline {
         stage('Build the docker image'){
 
             steps{
-                
-                script{
-                   sh "docker image build -t $JOB_NAME:v1.$JOB_BUILD ."
+                   sh "docker image build -t $JOB_NAME:v1.$BUILD_ID ."
                    sh "docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:v1.$JOB_BUILD"
-                   sh "docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:latest"
-                }
-            }
+                   sh "docker image tag $JOB_NAME:v1.$BUILD_ID lokeshsdockerhub/$JOB_NAME:latest"
+
+            }    
         }
 
         stage('Scan the docker image'){
