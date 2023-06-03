@@ -7,10 +7,10 @@ pipeline {
         stage('Checkout code'){
          
            steps{
-           git branch: 'main',
-           credentialsId: 'github_auth',
-           pwdurl: ' https://github.com/lokeshsgithub/django-notes-app.git'
-        
+              
+              git branch: 'main',
+              credentialsId: 'github_auth',
+              url: ' https://github.com/lokeshsgithub/django-notes-app.git'
             }
 
         }
