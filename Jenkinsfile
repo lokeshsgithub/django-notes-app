@@ -20,13 +20,9 @@ pipeline {
             steps{
                 
                 script{
-
-                    sh """
-                    docker image build -t $JOB_NAME:v1.$JOB_BUILD .
-                    docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:v1.$JOB_BUILD
-                    docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:latest
-
-                    """
+                   sh "docker build -t $JOB_NAME:v1.$JOB_BUILD ."
+                   sh "docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:v1.$JOB_BUILD"
+                   sh "docker image tag $JOB_NAME:v1.$JOB_BUILD lokeshsdockerhub/$JOB_NAME:latest"
                 }
             }
         }
