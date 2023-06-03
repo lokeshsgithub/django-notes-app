@@ -14,6 +14,22 @@ pipeline {
             }
 
         }
+
+        stage('Build the docker image'){
+
+            steps{
+                
+                script{
+
+                    sh """
+                    docker build -t $JOB_NAME:v1.JOB_BUILD .
+                    docker image tag $JOB_NAME:v1.JOB_BUILD lokeshsdockerhub/$JOB_NAME:v1.JOB_BUILD
+                    docker image tag $JOB_NAME:v1.JOB_BUILD lokeshsdockerhub/$JOB_NAME:latest
+
+                    """
+                }
+            }
+        }
         
     }
 }
