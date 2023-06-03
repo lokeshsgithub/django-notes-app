@@ -47,12 +47,11 @@ pipeline {
                 script{
                     
                     withCredentials([string(credentialsId: 'docker_auth', variable: 'dockerhub_pwd')]) {
+                
+                   sh "docker login -u lokeshsdockerhub -p ${dockerhub_pwd}"
+                   sh "docker push lokeshsdockerhub/$JOB_NAME:v1.$BUILD_ID"
+                   sh "docker push lokeshsdockerhub/$JOB_NAME:latest"
                     
-                    sh """
-                    docker login -u lokeshsdockerhub -p ${dockerhub_pwd}
-                    docker push lokeshsdockerhub/$JOB_NAME:v1.$JOB_BUILD
-                    docker push lokeshsdockerhub/$JOB_NAME:latest
-                    """
                     }
 
                 }
