@@ -2,14 +2,22 @@ pipeline {
 
     agent any
 
-    stages('Checkout code'){
+    stages {
 
-        steps{
-
+        stage('Checkout code'){
+         
+           steps{
            git branch: 'main',
            credentialsId: 'github_auth',
            pwdurl: ' https://github.com/lokeshsgithub/django-notes-app.git'
-        }
-    }
+        
+            }
 
+        }
+        
+    }
 }
+
+        
+
+ 
