@@ -58,7 +58,24 @@ pipeline {
             }
         }
 
-        
+        stage('Update the image tag in YAML'){
+
+            steps{
+
+                sh """
+                cd notesapp
+                sed -i 's/version/{BUILD_ID}/g' values.yaml > scan.txt
+                cat scan.txt
+
+                git config --global user.mail "lokeshreddy05690@gmail.com"
+                git config --global user.name "lokeshsgithub"
+                git add .
+                git commit -m "update the image tag in YAML file"
+                git push origin main
+                """
+            }
+        }
+
 
         stage('Deploy the app into helm '){
 
