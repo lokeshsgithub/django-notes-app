@@ -58,8 +58,16 @@ pipeline {
             }
         }
 
+        stage('Run the Docker image '){
 
-        
+            steps{
+                
+               sh "docker run -d --name ${$JOB_NAME} -p 8000:8000 lokeshsdockerhub/$JOB_NAME:v1.$BUILD_ID"
+
+            }
+
+
+
     }
 }
 
