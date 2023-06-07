@@ -58,7 +58,7 @@ pipeline {
             }
         }
 
-        stage('Update the image tag in YAML'){
+        /*stage('Update the image tag in YAML'){
 
             steps{
 
@@ -73,7 +73,7 @@ pipeline {
                 git push origin main
                 """
             }
-        }
+        }*/
 
 
         stage('Deploy the app into helm '){
