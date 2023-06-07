@@ -67,7 +67,7 @@ pipeline {
                 sed -i 's/version/${BUILD_ID}/g' values.yaml > scan.txt
                 cat scan.txt
 
-                git config --global user.name "lokeshreddy05690@gmail.com"
+                git config --global user.email "lokeshreddy05690@gmail.com"
                 git config --global user.name "lokeshsgithub"
                 git add .
                 git commit -m "update the image tag in YAML file"
