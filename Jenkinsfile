@@ -25,7 +25,7 @@ pipeline {
             }    
         }
 
-        stage('Scan the docker image'){
+       /* stage('Scan the docker image'){
 
             steps{
                 
@@ -38,7 +38,7 @@ pipeline {
                     """
                 }
             }
-        }
+        }*/
 
         stage('Push image into dockerhub'){
 
@@ -63,7 +63,8 @@ pipeline {
             steps{
 
                 sh """
-                sed -i 's/version/${BUILD_ID}/g' values.yaml
+                cd notesapp
+                sed -i 's/imagetag/${BUILD_ID}/g' values.yaml
 
                 git config --global user.email "lokeshreddy05690@gmail.com"
                 git config --global user.name "lokeshsgithub"

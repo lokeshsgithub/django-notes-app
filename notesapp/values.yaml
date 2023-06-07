@@ -5,10 +5,10 @@
 replicaCount: 
 
 image:
-  repository: lokeshsdockerhub/notesapp:v1.version
+  repository: lokeshsdockerhub/notesapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.imagetag"
 
 imagePullSecrets: []
 nameOverride: ""
