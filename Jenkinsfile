@@ -58,24 +58,18 @@ pipeline {
             }
         }
 
-        stage('Update the image tag in YAML file'){
+        
 
-            steps{
-
-                sh "sed -i 's/version/${BUILD_ID}/g' deployment.yaml"
-            }
-        }
-
-        stage('Deploy the app into k8s cluster'){
+        stage('Deploy the app into helm '){
 
             steps{
 
                 script{
 
                 sh """
-                kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
-
+                helm upgrade --install noteapp notesapp --dry-run > scan.txt
+                cat scan.txt
+                helm upgrade --install noteapp notesapp
                 """
 
                 }
