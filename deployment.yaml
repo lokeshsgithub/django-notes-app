@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp
+spec:
+  selector:
+    matchLabels:
+      app: notesapp
+  template:
+    metadata:
+      labels:
+        app: notesapp
+    spec:
+      containers:
+      - name: notesapp
+        image: lokeshsdockerhub/notesapp:Version
+        resources:
+          requests:
+            cpu: 256m
+            memory: 512Mi
+          limits:
+            memory: "612Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 8000
+

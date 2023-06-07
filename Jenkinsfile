@@ -58,19 +58,26 @@ pipeline {
             }
         }
 
-        stage('Run the Docker image '){
+        stage('Update the image tag in YAML file'){
 
             steps{
-                
-               sh "docker run -d --name ${$JOB_NAME} -p 8000:8000 lokeshsdockerhub/$JOB_NAME:v1.$BUILD_ID"
 
+                sh "sed -i 's/Version/${BUILD_ID}/g' deployment.yaml"
             }
+        }
 
+        stage('Deploy the app into k8s cluster'){
 
+            steps{
 
+                sh """
+                kubectl apply -f deployment.yaml
+                kubectl apply -f service.yaml
+
+                """
+            }
+        }
+     
+        
     }
 }
-
-        
-
- 
