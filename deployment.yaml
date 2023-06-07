@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: notesapp
-        image: lokeshsdockerhub/notesapp:Version
+        image: lokeshsdockerhub/notesapp:version
         resources:
           requests:
             cpu: 256m

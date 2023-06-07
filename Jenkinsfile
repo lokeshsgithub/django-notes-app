@@ -62,7 +62,7 @@ pipeline {
 
             steps{
 
-                sh "sed -i 's/Version/${BUILD_ID}/g' deployment.yaml"
+                sh "sed -i 's/version/${BUILD_ID}/g' deployment.yaml"
             }
         }
 
@@ -70,11 +70,16 @@ pipeline {
 
             steps{
 
+                script{
+
                 sh """
                 kubectl apply -f deployment.yaml
                 kubectl apply -f service.yaml
 
                 """
+
+                }
+
             }
         }
      
